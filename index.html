@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Practice</title>
+  <style>
+    body{
+      display: flex; /* 横並び */
+      flex-wrap: wrap; /* 折り返し表示 */
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+      cursor: pointer;
+      transition: 0.8s; 
+      margin: 0 8px 8px 0;
+    }
+    .circle {
+      background: pink;
+      border-radius: 50%;
+      transform: rotate(360deg); /* 回転 */
+    }
+  </style>
+</head>
+
+<!-- ここから -->
+  <!-- <body>
+          <div class="box" id="target1"></div>
+          <div class="box" id="target2"></div>
+          <div class="box" id="target3"></div>
+          <script>
+                // (定数targetに何度も使う文を代入してコードを見やすく)
+              const target1 = document.getElementById('target1');
+              const target2 = document.getElementById('target2');
+              const target3 = document.getElementById('target3');
+                //(documentは文書全体のこと、この後にドットで繋げてgetElementById('target')で指定。そうすると指定したid[()の中]をもつ要素を文書全体から取得してねと言う意味になる。)
+                //(addEventListener　=>　EventListenerと言うのは何かが起きたらなんらかの処理をする仕組み、この何かが起きたらは今回の場合は、clickしたらに当たる。)
+              target1.addEventListener('click', () => {　//ここから関数で、クリックした後の処理を下に記述
+                // (document.getElementById('target').style.background = 'pink';)
+                // (document.getElementById('target').style.borderRadius = '50%';)
+                // (上の二つの行を以下の１行でまとめて、CSSに書いている。)
+                target1.classList.toggle('circle'); // (toggleはcircleクラスがあればつける、なければ戻す。（今回の場合：回転したあと、元に戻す）)
+              });
+              target2.addEventListener('click', () => {
+                target2.classList.toggle('circle');
+              });
+              target3.addEventListener('click', () => {
+                target3.classList.toggle('circle');
+              });
+          </script> -->
+  <!-- ここまでを以下で省略して記述 -->
+
+<body>
+  <script>
+    'use strict';
+    const div = document.createElement('div');
+    div.classList.add('box'); //boxクラス
+    // divに対してEventListener
+    div.addEventListener('click', () => {
+      div.classList.toggle('circle');
+    });
+    // ブラウザで表示するにはbodyの子要素としてdivを追加しないと表示されない
+    document.body.appendChild(div);
+  </script>
+</body>
+</html>
