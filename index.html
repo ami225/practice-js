@@ -15,12 +15,18 @@
       cursor: pointer;
       transition: 0.8s; 
       margin: 0 8px 8px 0;
+      text-align: center; /* div(青い箱)の中のテキストを中央揃え */
+      line-height: 100px; /* divのテキストの上下を中央揃え */
     }
-    .circle {
+    .win {
       background: pink;
       border-radius: 50%;
       transform: rotate(360deg); /* 回転 */
     }
+    .lose{
+      transform: scale(0.9);
+    }
+
   </style>
 </head>
 
@@ -54,14 +60,31 @@
 <body>
   <script>
     'use strict';
-    const div = document.createElement('div');
-    div.classList.add('box'); //boxクラス
-    // divに対してEventListener
-    div.addEventListener('click', () => {
-      div.classList.toggle('circle');
-    });
-    // ブラウザで表示するにはbodyの子要素としてdivを追加しないと表示されない
-    document.body.appendChild(div);
+    // numに５を代入
+    const num = 5;
+    // Math.random()では0以上1未満のランダムな数値を生成。 Math.random() * numで0以上5未満のランダムな数値が生成される。
+    // 今回は0~4までのランダムな数値なので、Math.floor()で小数点以下を切り捨てで0 ~ 4までのランダムな数値が生成される。
+    const winner = Math.floor(Math.random() * num); // 0 - 4で当たりがランダムで作られる
+    // iが１ずつ増えて行って、iが100になったときに止まる繰り返し処理
+    for (let i = 0; i < num; i++){
+      const div = document.createElement('div');
+      div.classList.add('box'); //boxクラス
+      // divに対してEventListener
+      div.addEventListener('click', () => {
+      // winの時とloseの条件分岐
+        //winnerとiが等しい時
+        if (i === winner) { 
+          div.textContent = "Win!";
+          div.classList.add("win"); //winクラス
+        }else{
+          div.textContent = "Lose!";
+          div.classList.add("Lose"); //Loseクラス
+        }
+      });
+      // ブラウザで表示するにはbodyの子要素としてdivを追加しないと表示されない
+      document.body.appendChild(div);
+    }
+    
   </script>
 </body>
 </html>
